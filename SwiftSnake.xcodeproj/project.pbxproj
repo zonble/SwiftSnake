@@ -84,7 +84,6 @@
 				D4F3B147193F777800D11DE2 /* ViewController.swift */,
 				D4F3B162193F780C00D11DE2 /* Snake.swift */,
 				D4429BE4193FDB7A00F1E910 /* SnakeView.swift */,
-				D4F3B149193F777800D11DE2 /* Main.storyboard */,
 				D4F3B14C193F777800D11DE2 /* Images.xcassets */,
 				D4F3B143193F777800D11DE2 /* Supporting Files */,
 			);
@@ -94,6 +93,7 @@
 		D4F3B143193F777800D11DE2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D4F3B149193F777800D11DE2 /* Main.storyboard */,
 				D4F3B144193F777800D11DE2 /* Info.plist */,
 			);
 			name = "Supporting Files";

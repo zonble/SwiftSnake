@@ -65,7 +65,7 @@ class Snake {
 
 		let x:Int = self.worldSize.width / 2
 		let y:Int = self.worldSize.height / 2
-		for i in 0...3 {
+		for i in 0...inLength {
 			var p:Point = Point(x:x + i, y: y)
 			self.points.append(p)
 		}

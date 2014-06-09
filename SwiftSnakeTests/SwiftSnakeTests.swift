@@ -1,35 +1,29 @@
-//
-//  SwiftSnakeTests.swift
-//  SwiftSnakeTests
-//
-//  Created by zonble on 6/4/14.
-//  Copyright (c) 2014 Weizhong Yang. All rights reserved.
-//
-
 import XCTest
 
 class SwiftSnakeTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
+
+	override func setUp() {
+		super.setUp()
+	}
+
+	override func tearDown() {
+		super.tearDown()
+	}
+
+	func testSnakePoint() -> Void {
+		let point:Point = Point(x:10, y:20)
+		XCTAssertTrue(point.x == 10, "x must be 10")
+		XCTAssertTrue(point.y == 20, "y must be 20")
+	}
+
+	func testHit() {
+		let snake = Snake(inSize: WorldSize(width: 10, height: 10), length: 6)
+		snake.changeDirection(.up)
+		snake.move()
+		snake.changeDirection(.right)
+		snake.move()
+		snake.changeDirection(.down)
+		snake.move()
+		XCTAssertTrue(snake.isHeadHitBody(), "head must hit body.")
+	}
 }
