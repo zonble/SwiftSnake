@@ -15,7 +15,6 @@ class ViewController: UIViewController, SnakeViewDelegate {
 		self.snakeView!.autoresizingMask = .FlexibleWidth | .FlexibleHeight
 		self.view.insertSubview(self.snakeView, atIndex: 0)
 
-		self.wantsFullScreenLayout = true
 		if let view = self.snakeView? {
 			view.delegate = self
 		}

@@ -104,7 +104,7 @@ class Snake {
 		if (lastPoint.y == worldSize.height - 1 && theOneBeforeLastPoint.y == 0) {
 			y = -1
 		}
-		for i in 0..inLength {
+		for i in 0..<inLength {
 			let theX:Int = (lastPoint.x + x * (i + 1)) % worldSize.width
 			let theY:Int = (lastPoint.y + y * (i + 1)) % worldSize.height
 			self.points.append(Point(x:theX, y:theY))
@@ -113,7 +113,7 @@ class Snake {
 
 	func isHeadHitBody() -> Bool {
 		var headPoint = self.points[0]
-		for bodyPoint in self.points[1..self.points.count] {
+		for bodyPoint in self.points[1..<self.points.count] {
 			if (bodyPoint.x == headPoint.x &&
 				bodyPoint.y == headPoint.y) {
 					return true
