@@ -25,8 +25,8 @@ class SnakeView : UIView {
 			if worldSize.width <= 0 || worldSize.height <= 0 {
 				return
 			}
-			var w = Int(self.bounds.size.width / Float(worldSize.width))
-			var h = Int(self.bounds.size.height / Float(worldSize.height))
+			var w = Int(Float(self.bounds.size.width) / Float(worldSize.width))
+			var h = Int(Float(self.bounds.size.height) / Float(worldSize.height))
 
 			UIColor.blackColor().set()
 			let points = snake.points
