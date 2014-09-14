@@ -13,7 +13,7 @@ class ViewController: UIViewController, SnakeViewDelegate {
 
 		self.snakeView = SnakeView(frame: self.view.bounds)
 		self.snakeView!.autoresizingMask = .FlexibleWidth | .FlexibleHeight
-		self.view.insertSubview(self.snakeView, atIndex: 0)
+		self.view.insertSubview(self.snakeView!, atIndex: 0)
 
 		if let view = self.snakeView? {
 			view.delegate = self
@@ -36,19 +36,19 @@ class ViewController: UIViewController, SnakeViewDelegate {
 		let direction = gr.direction
 		switch direction {
 		case UISwipeGestureRecognizerDirection.Right:
-			if self.snake?.changeDirection(Direction.right) {
+			if (self.snake?.changeDirection(Direction.right) != nil) {
 				self.snake?.lockDirection()
 			}
 		case UISwipeGestureRecognizerDirection.Left:
-			if self.snake?.changeDirection(Direction.left) {
+			if (self.snake?.changeDirection(Direction.left) != nil) {
 				self.snake?.lockDirection()
 			}
 		case UISwipeGestureRecognizerDirection.Up:
-			if self.snake?.changeDirection(Direction.up) {
+			if (self.snake?.changeDirection(Direction.up) != nil) {
 				self.snake?.lockDirection()
 			}
 		case UISwipeGestureRecognizerDirection.Down:
-			if self.snake?.changeDirection(Direction.down) {
+			if (self.snake?.changeDirection(Direction.down) != nil) {
 				self.snake?.lockDirection()
 			}
 		default:
@@ -78,7 +78,7 @@ class ViewController: UIViewController, SnakeViewDelegate {
 	}
 
 	func startGame() {
-		if self.timer {
+		if (self.timer != nil) {
 			return
 		}
 
