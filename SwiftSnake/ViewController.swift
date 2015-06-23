@@ -12,10 +12,10 @@ class ViewController: UIViewController, SnakeViewDelegate {
 		super.viewDidLoad()
 
 		self.snakeView = SnakeView(frame: self.view.bounds)
-		self.snakeView!.autoresizingMask = .FlexibleWidth | .FlexibleHeight
+		self.snakeView!.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
 		self.view.insertSubview(self.snakeView!, atIndex: 0)
 
-		if let view = self.snakeView? {
+		if let view = self.snakeView {
 			view.delegate = self
 		}
 		for direction in [UISwipeGestureRecognizerDirection.Right,
@@ -98,7 +98,7 @@ class ViewController: UIViewController, SnakeViewDelegate {
 
 	func timerMethod(timer:NSTimer) {
 		self.snake?.move()
-		var headHitBody = self.snake?.isHeadHitBody()
+		let headHitBody = self.snake?.isHeadHitBody()
 		if headHitBody == true {
 			self.endGame()
 			return

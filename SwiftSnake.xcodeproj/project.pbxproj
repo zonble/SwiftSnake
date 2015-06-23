@@ -8,24 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		D4429BE5193FDB7A00F1E910 /* SnakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4429BE4193FDB7A00F1E910 /* SnakeView.swift */; };
-		D4429BE6193FECE400F1E910 /* Snake.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F3B162193F780C00D11DE2 /* Snake.swift */; };
 		D4F3B146193F777800D11DE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F3B145193F777800D11DE2 /* AppDelegate.swift */; };
 		D4F3B148193F777800D11DE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F3B147193F777800D11DE2 /* ViewController.swift */; };
 		D4F3B14B193F777800D11DE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4F3B149193F777800D11DE2 /* Main.storyboard */; };
 		D4F3B14D193F777800D11DE2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4F3B14C193F777800D11DE2 /* Images.xcassets */; };
-		D4F3B159193F777800D11DE2 /* SwiftSnakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F3B158193F777800D11DE2 /* SwiftSnakeTests.swift */; };
 		D4F3B163193F780C00D11DE2 /* Snake.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F3B162193F780C00D11DE2 /* Snake.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		D4F3B153193F777800D11DE2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4F3B138193F777800D11DE2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D4F3B13F193F777800D11DE2;
-			remoteInfo = SwiftSnake;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		D4429BE4193FDB7A00F1E910 /* SnakeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnakeView.swift; sourceTree = "<group>"; };
@@ -35,21 +23,11 @@
 		D4F3B147193F777800D11DE2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D4F3B14A193F777800D11DE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D4F3B14C193F777800D11DE2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D4F3B152193F777800D11DE2 /* SwiftSnakeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftSnakeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4F3B157193F777800D11DE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D4F3B158193F777800D11DE2 /* SwiftSnakeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSnakeTests.swift; sourceTree = "<group>"; };
 		D4F3B162193F780C00D11DE2 /* Snake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snake.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D4F3B13D193F777800D11DE2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D4F3B14F193F777800D11DE2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -63,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				D4F3B142193F777800D11DE2 /* SwiftSnake */,
-				D4F3B155193F777800D11DE2 /* SwiftSnakeTests */,
 				D4F3B141193F777800D11DE2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,7 +49,6 @@
 			isa = PBXGroup;
 			children = (
 				D4F3B140193F777800D11DE2 /* SwiftSnake.app */,
-				D4F3B152193F777800D11DE2 /* SwiftSnakeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,23 +75,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D4F3B155193F777800D11DE2 /* SwiftSnakeTests */ = {
-			isa = PBXGroup;
-			children = (
-				D4F3B158193F777800D11DE2 /* SwiftSnakeTests.swift */,
-				D4F3B156193F777800D11DE2 /* Supporting Files */,
-			);
-			path = SwiftSnakeTests;
-			sourceTree = "<group>";
-		};
-		D4F3B156193F777800D11DE2 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D4F3B157193F777800D11DE2 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -136,39 +95,18 @@
 			productReference = D4F3B140193F777800D11DE2 /* SwiftSnake.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D4F3B151193F777800D11DE2 /* SwiftSnakeTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D4F3B15F193F777800D11DE2 /* Build configuration list for PBXNativeTarget "SwiftSnakeTests" */;
-			buildPhases = (
-				D4F3B14E193F777800D11DE2 /* Sources */,
-				D4F3B14F193F777800D11DE2 /* Frameworks */,
-				D4F3B150193F777800D11DE2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D4F3B154193F777800D11DE2 /* PBXTargetDependency */,
-			);
-			name = SwiftSnakeTests;
-			productName = SwiftSnakeTests;
-			productReference = D4F3B152193F777800D11DE2 /* SwiftSnakeTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		D4F3B138193F777800D11DE2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Weizhong Yang";
 				TargetAttributes = {
 					D4F3B13F193F777800D11DE2 = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					D4F3B151193F777800D11DE2 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = D4F3B13F193F777800D11DE2;
 					};
 				};
 			};
@@ -186,7 +124,6 @@
 			projectRoot = "";
 			targets = (
 				D4F3B13F193F777800D11DE2 /* SwiftSnake */,
-				D4F3B151193F777800D11DE2 /* SwiftSnakeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -198,13 +135,6 @@
 			files = (
 				D4F3B14B193F777800D11DE2 /* Main.storyboard in Resources */,
 				D4F3B14D193F777800D11DE2 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D4F3B150193F777800D11DE2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,24 +152,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D4F3B14E193F777800D11DE2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D4429BE6193FECE400F1E910 /* Snake.swift in Sources */,
-				D4F3B159193F777800D11DE2 /* SwiftSnakeTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D4F3B154193F777800D11DE2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D4F3B13F193F777800D11DE2 /* SwiftSnake */;
-			targetProxy = D4F3B153193F777800D11DE2 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D4F3B149193F777800D11DE2 /* Main.storyboard */ = {
@@ -356,42 +269,6 @@
 			};
 			name = Release;
 		};
-		D4F3B160193F777800D11DE2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SwiftSnake.app/SwiftSnake";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SwiftSnakeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				METAL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Debug;
-		};
-		D4F3B161193F777800D11DE2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SwiftSnake.app/SwiftSnake";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SwiftSnakeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				METAL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -409,15 +286,6 @@
 			buildConfigurations = (
 				D4F3B15D193F777800D11DE2 /* Debug */,
 				D4F3B15E193F777800D11DE2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D4F3B15F193F777800D11DE2 /* Build configuration list for PBXNativeTarget "SwiftSnakeTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D4F3B160193F777800D11DE2 /* Debug */,
-				D4F3B161193F777800D11DE2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

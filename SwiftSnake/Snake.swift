@@ -53,11 +53,11 @@ enum Direction: Int {
 }
 
 class Snake {
-	var worldSize : WorldSize
-	var length:Int = 0
-	var points:Array<Point> = []
-	var direction:Direction = .left
-	var directionLocked:Bool = false
+	var worldSize :WorldSize
+	var length :Int = 0
+	var points :[Point] = []
+	var direction :Direction = .left
+	var directionLocked :Bool = false
 
 	init(inSize:WorldSize, length inLength:Int) {
 		self.worldSize = inSize
@@ -66,18 +66,18 @@ class Snake {
 		let x:Int = self.worldSize.width / 2
 		let y:Int = self.worldSize.height / 2
 		for i in 0...inLength {
-			var p:Point = Point(x:x + i, y: y)
+			let p:Point = Point(x:x + i, y: y)
 			self.points.append(p)
 		}
 	}
 
-	func move() {
+	final func move() {
 		self.points.removeLast()
 		let head = self.direction.move(points[0], worldSize: self.worldSize)
 		self.points.insert(head, atIndex: 0)
 	}
 
-	func changeDirection(newDirection:Direction) {
+	final func changeDirection(newDirection:Direction) {
 		if self.directionLocked {
 			return
 		}
@@ -86,7 +86,7 @@ class Snake {
 		}
 	}
 
-	func increaseLength(inLength:Int) {
+	final func increaseLength(inLength:Int) {
 		let lastPoint:Point = self.points[self.points.count-1]
 		let theOneBeforeLastPoint:Point = self.points[self.points.count-2]
 		var x = lastPoint.x - theOneBeforeLastPoint.x
@@ -105,14 +105,14 @@ class Snake {
 			y = -1
 		}
 		for i in 0..<inLength {
-			let theX:Int = (lastPoint.x + x * (i + 1)) % worldSize.width
-			let theY:Int = (lastPoint.y + y * (i + 1)) % worldSize.height
+			let theX :Int = (lastPoint.x + x * (i + 1)) % worldSize.width
+			let theY :Int = (lastPoint.y + y * (i + 1)) % worldSize.height
 			self.points.append(Point(x:theX, y:theY))
 		}
 	}
 
-	func isHeadHitBody() -> Bool {
-		var headPoint = self.points[0]
+	final func isHeadHitBody() -> Bool {
+		let headPoint = self.points[0]
 		for bodyPoint in self.points[1..<self.points.count] {
 			if (bodyPoint.x == headPoint.x &&
 				bodyPoint.y == headPoint.y) {
@@ -122,11 +122,11 @@ class Snake {
 		return false
 	}
 
-	func lockDirection() {
+	final func lockDirection() {
 		self.directionLocked = true
 	}
 
-	func unlockDirection() {
+	final func unlockDirection() {
 		self.directionLocked = false
 	}
 }
