@@ -16,7 +16,7 @@ enum Direction: Int {
 	case up = 3
 	case down = 4
 
-	func canChangeTo(newDirection:Direction) -> Bool {
+	func canChangeTo(_ newDirection:Direction) -> Bool {
 		var canChange = false
 		switch self {
 		case .left, .right:
@@ -27,24 +27,28 @@ enum Direction: Int {
 		return canChange
 	}
 
-	func move(point:Point, worldSize:WorldSize) -> (Point) {
+	func move(_ point:Point, worldSize:WorldSize) -> (Point) {
 		var theX = point.x
 		var theY = point.y
 		switch self {
 		case .left:
-			if --theX < 0 {
+            theX -= 1
+			if theX < 0 {
 				theX = worldSize.width - 1
 			}
 		case .up:
-			if --theY < 0 {
+            theY -= 1
+			if theY < 0 {
 				theY = worldSize.height - 1
 			}
 		case .right:
-			if ++theX > worldSize.width {
+            theX += 1
+			if theX > worldSize.width {
 				theX = 0
 			}
 		case .down:
-			if ++theY > worldSize.height {
+            theY += 1
+			if theY > worldSize.height {
 				theY = 0
 			}
 		}
@@ -66,7 +70,7 @@ class Snake {
 		let x:Int = self.worldSize.width / 2
 		let y:Int = self.worldSize.height / 2
 		for i in 0...inLength {
-			var p:Point = Point(x:x + i, y: y)
+			let p:Point = Point(x:x + i, y: y)
 			self.points.append(p)
 		}
 	}
@@ -74,10 +78,10 @@ class Snake {
 	func move() {
 		self.points.removeLast()
 		let head = self.direction.move(points[0], worldSize: self.worldSize)
-		self.points.insert(head, atIndex: 0)
+		self.points.insert(head, at: 0)
 	}
 
-	func changeDirection(newDirection:Direction) {
+	func changeDirection(_ newDirection:Direction) {
 		if self.directionLocked {
 			return
 		}
@@ -86,7 +90,7 @@ class Snake {
 		}
 	}
 
-	func increaseLength(inLength:Int) {
+	func increaseLength(_ inLength:Int) {
 		let lastPoint:Point = self.points[self.points.count-1]
 		let theOneBeforeLastPoint:Point = self.points[self.points.count-2]
 		var x = lastPoint.x - theOneBeforeLastPoint.x
@@ -112,7 +116,7 @@ class Snake {
 	}
 
 	func isHeadHitBody() -> Bool {
-		var headPoint = self.points[0]
+		let headPoint = self.points[0]
 		for bodyPoint in self.points[1..<self.points.count] {
 			if (bodyPoint.x == headPoint.x &&
 				bodyPoint.y == headPoint.y) {
