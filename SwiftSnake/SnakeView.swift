@@ -20,13 +20,20 @@ class SnakeView : UIView {
 
 	override func draw(_ rect: CGRect) {
 		super.draw(rect)
+
+        UIColor.lightGray.set()
+        UIBezierPath(rect: rect).fill()
+
 		if let snake:Snake = delegate?.snakeForSnakeView(self) {
 			let worldSize = snake.worldSize
-			if worldSize.width <= 0 || worldSize.height <= 0 {
+            let tileSize = self.bounds.size.height
+
+			if worldSize <= 0 {
 				return
 			}
-			let w = Int(Float(self.bounds.size.width) / Float(worldSize.width))
-			let h = Int(Float(self.bounds.size.height) / Float(worldSize.height))
+
+			let w = Int(Float(tileSize) / Float(worldSize))
+			let h = Int(Float(tileSize) / Float(worldSize))
 
 			UIColor.black.set()
 			let points = snake.points

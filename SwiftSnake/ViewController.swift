@@ -11,8 +11,15 @@ class ViewController: UIViewController, SnakeViewDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		self.snakeView = SnakeView(frame: self.view.bounds)
-		self.snakeView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.view.backgroundColor = UIColor.gray
+
+        let height = self.view.frame.size.height
+        let width = self.view.frame.size.width
+        let snakeX = Int((width - height) / 2)
+
+        let snakeFrame = CGRect(x: Int(snakeX), y: Int(0), width: Int(height), height: Int(height))
+
+        self.snakeView = SnakeView(frame: snakeFrame)
 		self.view.insertSubview(self.snakeView!, at: 0)
 
 		if let view = self.snakeView {
@@ -61,8 +68,8 @@ class ViewController: UIViewController, SnakeViewDelegate {
 		let worldSize = self.snake!.worldSize
 		var x = 0, y = 0
 		while (true) {
-            x = Int(arc4random_uniform(UInt32(worldSize.width)))
-            y = Int(arc4random_uniform(UInt32(worldSize.height)))
+            x = Int(arc4random_uniform(UInt32(worldSize)))
+            y = Int(arc4random_uniform(UInt32(worldSize)))
 			var isBody = false
 			for p in self.snake!.points {
 				if p.x == x && p.y == y {
@@ -83,7 +90,8 @@ class ViewController: UIViewController, SnakeViewDelegate {
 		}
 
 		self.startButton!.isHidden = true
-		let worldSize = WorldSize(width: 24, height: 15)
+        let height = self.view.frame.size.height
+		let worldSize = Int(height.truncatingRemainder(dividingBy: 100))
 		self.snake = Snake(inSize: worldSize, length: 2)
 		self.makeNewFruit()
 		self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.timerMethod(_:)), userInfo: nil, repeats: true)
