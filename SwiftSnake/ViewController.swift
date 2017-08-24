@@ -3,7 +3,7 @@ import UIKit
 class ViewController: UIViewController, SnakeViewDelegate {
 	@IBOutlet var startButton:UIButton?
 	var snakeView:SnakeView?
-	var timer:NSTimer?
+	var timer:Timer?
 
 	var snake:Snake?
 	var fruit:Point?
@@ -11,18 +11,25 @@ class ViewController: UIViewController, SnakeViewDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		self.snakeView = SnakeView(frame: self.view.bounds)
-		self.snakeView!.autoresizingMask = .FlexibleWidth | .FlexibleHeight
-		self.view.insertSubview(self.snakeView!, atIndex: 0)
+        self.view.backgroundColor = UIColor.gray
 
-		if let view = self.snakeView? {
+        let height = self.view.frame.size.height
+        let width = self.view.frame.size.width
+        let snakeX = Int((width - height) / 2)
+
+        let snakeFrame = CGRect(x: Int(snakeX), y: Int(0), width: Int(height), height: Int(height))
+
+        self.snakeView = SnakeView(frame: snakeFrame)
+		self.view.insertSubview(self.snakeView!, at: 0)
+
+		if let view = self.snakeView {
 			view.delegate = self
 		}
-		for direction in [UISwipeGestureRecognizerDirection.Right,
-			UISwipeGestureRecognizerDirection.Left,
-			UISwipeGestureRecognizerDirection.Up,
-			UISwipeGestureRecognizerDirection.Down] {
-				let gr = UISwipeGestureRecognizer(target: self, action: "swipe:")
+		for direction in [UISwipeGestureRecognizerDirection.right,
+			UISwipeGestureRecognizerDirection.left,
+			UISwipeGestureRecognizerDirection.up,
+			UISwipeGestureRecognizerDirection.down] {
+				let gr = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.swipe(_:)))
 				gr.direction = direction
 				self.view.addGestureRecognizer(gr)
 		}
@@ -32,22 +39,22 @@ class ViewController: UIViewController, SnakeViewDelegate {
 		super.didReceiveMemoryWarning()
 	}
 
-	func swipe (gr:UISwipeGestureRecognizer) {
+	func swipe (_ gr:UISwipeGestureRecognizer) {
 		let direction = gr.direction
 		switch direction {
-		case UISwipeGestureRecognizerDirection.Right:
+		case UISwipeGestureRecognizerDirection.right:
 			if (self.snake?.changeDirection(Direction.right) != nil) {
 				self.snake?.lockDirection()
 			}
-		case UISwipeGestureRecognizerDirection.Left:
+		case UISwipeGestureRecognizerDirection.left:
 			if (self.snake?.changeDirection(Direction.left) != nil) {
 				self.snake?.lockDirection()
 			}
-		case UISwipeGestureRecognizerDirection.Up:
+		case UISwipeGestureRecognizerDirection.up:
 			if (self.snake?.changeDirection(Direction.up) != nil) {
 				self.snake?.lockDirection()
 			}
-		case UISwipeGestureRecognizerDirection.Down:
+		case UISwipeGestureRecognizerDirection.down:
 			if (self.snake?.changeDirection(Direction.down) != nil) {
 				self.snake?.lockDirection()
 			}
@@ -61,8 +68,8 @@ class ViewController: UIViewController, SnakeViewDelegate {
 		let worldSize = self.snake!.worldSize
 		var x = 0, y = 0
 		while (true) {
-			x = random() % worldSize.width
-			y = random() % worldSize.height
+            x = Int(arc4random_uniform(UInt32(worldSize)))
+            y = Int(arc4random_uniform(UInt32(worldSize)))
 			var isBody = false
 			for p in self.snake!.points {
 				if p.x == x && p.y == y {
@@ -82,23 +89,24 @@ class ViewController: UIViewController, SnakeViewDelegate {
 			return
 		}
 
-		self.startButton!.hidden = true
-		let worldSize = WorldSize(width: 24, height: 15)
+		self.startButton!.isHidden = true
+        let height = self.view.frame.size.height
+		let worldSize = Int(height.truncatingRemainder(dividingBy: 100))
 		self.snake = Snake(inSize: worldSize, length: 2)
 		self.makeNewFruit()
-		self.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "timerMethod:", userInfo: nil, repeats: true)
+		self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.timerMethod(_:)), userInfo: nil, repeats: true)
 		self.snakeView!.setNeedsDisplay()
 	}
 
 	func endGame() {
-		self.startButton!.hidden = false
+		self.startButton!.isHidden = false
 		self.timer!.invalidate()
 		self.timer = nil
 	}
 
-	func timerMethod(timer:NSTimer) {
+	func timerMethod(_ timer:Timer) {
 		self.snake?.move()
-		var headHitBody = self.snake?.isHeadHitBody()
+		let headHitBody = self.snake?.isHeadHitBody()
 		if headHitBody == true {
 			self.endGame()
 			return
@@ -115,14 +123,14 @@ class ViewController: UIViewController, SnakeViewDelegate {
 		self.snakeView!.setNeedsDisplay()
 	}
 
-	@IBAction func start(sender:AnyObject) {
+	@IBAction func start(_ sender:AnyObject) {
 		self.startGame()
 	}
 
-	func snakeForSnakeView(view:SnakeView) -> Snake? {
+	func snakeForSnakeView(_ view:SnakeView) -> Snake? {
 		return self.snake
 	}
-	func pointOfFruitForSnakeView(view:SnakeView) -> Point? {
+	func pointOfFruitForSnakeView(_ view:SnakeView) -> Point? {
 		return self.fruit
 	}
 }

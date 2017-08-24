@@ -1,34 +1,41 @@
 import UIKit
 
 protocol SnakeViewDelegate {
-	func snakeForSnakeView(view:SnakeView) -> Snake?
-	func pointOfFruitForSnakeView(view:SnakeView) -> Point?
+	func snakeForSnakeView(_ view:SnakeView) -> Snake?
+	func pointOfFruitForSnakeView(_ view:SnakeView) -> Point?
 }
 
 class SnakeView : UIView {
 	var delegate:SnakeViewDelegate?
 
-	required init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
-		self.backgroundColor = UIColor.whiteColor()
+		self.backgroundColor = UIColor.white
 	}
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.backgroundColor = UIColor.whiteColor()
+		self.backgroundColor = UIColor.white
 	}
 
-	override func drawRect(rect: CGRect) {
-		super.drawRect(rect)
+	override func draw(_ rect: CGRect) {
+		super.draw(rect)
+
+        UIColor.lightGray.set()
+        UIBezierPath(rect: rect).fill()
+
 		if let snake:Snake = delegate?.snakeForSnakeView(self) {
 			let worldSize = snake.worldSize
-			if worldSize.width <= 0 || worldSize.height <= 0 {
+            let tileSize = self.bounds.size.height
+
+			if worldSize <= 0 {
 				return
 			}
-			var w = Int(Float(self.bounds.size.width) / Float(worldSize.width))
-			var h = Int(Float(self.bounds.size.height) / Float(worldSize.height))
 
-			UIColor.blackColor().set()
+			let w = Int(Float(tileSize) / Float(worldSize))
+			let h = Int(Float(tileSize) / Float(worldSize))
+
+			UIColor.black.set()
 			let points = snake.points
 			for point in points {
 				let rect = CGRect(x: point.x * w, y: point.y * h, width: w, height: h)
@@ -36,9 +43,9 @@ class SnakeView : UIView {
 			}
 
 			if let fruit = delegate?.pointOfFruitForSnakeView(self) {
-				UIColor.redColor().set()
+				UIColor.red.set()
 				let rect = CGRect(x: fruit.x * w, y: fruit.y * h, width: w, height: h)
-				UIBezierPath(ovalInRect: rect).fill()
+				UIBezierPath(ovalIn: rect).fill()
 			}
 		}
 	}
